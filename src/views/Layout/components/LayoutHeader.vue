@@ -1,5 +1,5 @@
 <script setup>
-import { getCategoryApi } from "@/apis/Layout";
+import { getCategoryApi } from "@/apis/layout";
 import { ref } from "vue";
 
 const categoryList = ref([]);
