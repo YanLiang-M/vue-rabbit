@@ -6,7 +6,6 @@ const bannerList = ref([]);
 const getBannerList = async () => {
   const res = await getBannerListApi();
   bannerList.value = res.result;
-  console.log(res);
 };
 getBannerList();
 </script>
