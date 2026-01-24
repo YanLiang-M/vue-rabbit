@@ -7,7 +7,6 @@ const newList = ref([]);
 const getNewList = async () => {
   const res = await getNewListApi();
   newList.value = res.result;
-  console.log(res);
 };
 getNewList();
 </script>
@@ -17,7 +16,7 @@ getNewList();
     <ul class="goods-list">
       <li v-for="item in newList" :key="item.id">
         <RouterLink to="/">
-          <img :src="item.picture" alt="" />
+          <el-image :src="item.picture" alt="" lazy />
           <p class="name">{{ item.name }}</p>
           <p class="price">&yen;{{ item.price }}</p>
         </RouterLink>
