@@ -4,7 +4,7 @@ import { ref } from "vue";
 
 const bannerList = ref([]);
 const getBannerList = async () => {
-  const res = await getBannerListApi();
+  const res = await getBannerListApi(1);
   bannerList.value = res.result;
 };
 getBannerList();

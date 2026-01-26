@@ -1,5 +1,6 @@
 <script setup>
 import { getCategoryApi } from "@/apis/category";
+import { getBannerListApi } from "@/apis/home";
 import { ref } from "vue";
 import { useRoute } from "vue-router";
 
@@ -11,6 +12,13 @@ const getCategoryList = async () => {
   console.log(categoryList.value);
 };
 getCategoryList();
+
+const bannerList = ref([]);
+const getBannerList = async () => {
+  const res = await getBannerListApi(2);
+  bannerList.value = res.result;
+};
+getBannerList();
 </script>
 
 <template>
@@ -23,11 +31,29 @@ getCategoryList();
           <el-breadcrumb-item>{{ categoryList.name }}</el-breadcrumb-item>
         </el-breadcrumb>
       </div>
+      <!-- 轮播图 -->
+      <div class="home-banner">
+        <el-carousel height="500px">
+          <el-carousel-item v-for="item in bannerList" :key="item.id">
+            <img :src="item.imgUrl" alt="" />
+          </el-carousel-item>
+        </el-carousel>
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped lang="scss">
+.home-banner {
+  width: 1240px;
+  height: 500px;
+  margin: 0 auto;
+  img {
+    width: 100%;
+    height: 500px;
+  }
+}
+
 .top-category {
   h3 {
     font-size: 28px;
