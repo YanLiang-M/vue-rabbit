@@ -8,7 +8,6 @@ const productList = ref([]);
 const getProductList = async () => {
   const res = await getProductListApi();
   productList.value = res.result;
-  console.log(res);
 };
 getProductList();
 </script>
